@@ -19,8 +19,4 @@ public class HomeActivity extends AppCompatActivity {
         Intent newPost = new Intent(this, NewPostActivity.class);
         startActivity(newPost);
     }
-
-    public void cancelPost(View v) {
-        finish();
-    }
 }
