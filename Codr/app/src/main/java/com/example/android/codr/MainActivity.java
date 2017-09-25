@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EditText username = (EditText)findViewById(R.id.username);
+        username.setText(CurrentUser.name);
     }
 
     public void goToRegisterScreen (View v) {
@@ -54,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        // Keep their username in memory
+        CurrentUser.name = username;
 
         Intent homeIntent = new Intent(this, HomeActivity.class);
         startActivity(homeIntent);

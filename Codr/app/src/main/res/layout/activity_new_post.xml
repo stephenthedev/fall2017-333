@@ -8,6 +8,7 @@
     tools:context="com.example.android.codr.NewPostActivity">
 
     <EditText
+        android:id="@+id/contentText"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 

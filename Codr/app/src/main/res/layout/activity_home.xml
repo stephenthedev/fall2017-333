@@ -11,18 +11,27 @@
 
 
     <!-- Peoples posts:name, content, time -->
-    <TextView
-        android:layout_width="wrap_content"
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Tino"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="14:25"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="some post text that is somewhat longer than other text views can be"/>-->
+
+    <LinearLayout
+        android:id="@+id/allPosts"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tino"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="14:25"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="some post text that is somewhat longer than other text views can be"/>
+        android:orientation="vertical">
+        <!-- This fills up with more LinearLayouts that have textviews inside -->
+        <!-- When this activity creates -->
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
