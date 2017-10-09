@@ -13,9 +13,14 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Populate for the first time, CurrentPosts.posts
+        DBHelper db = new DBHelper(this);
+
+        CurrentPosts.posts = db.getAllPosts();
         setContentView(R.layout.activity_home);
 
         Toast.makeText(this, "Welcome " + CurrentUser.name, Toast.LENGTH_SHORT).show();
+        onResume();
     }
 
     @Override
@@ -29,6 +34,10 @@ public class HomeActivity extends AppCompatActivity {
 
         for (int i = 0; i < CurrentPosts.posts.size(); i++) {
             Post currentPost = CurrentPosts.posts.get(i);
+
+            if (currentPost.isAdded) {
+                continue;
+            }
 
             // Create the post views
             LinearLayout postLayout = new LinearLayout(this);
@@ -44,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
 
             // Add the post layout to the allPosts linear layout
             allPosts.addView(postLayout);
+
+            currentPost.isAdded = true;
         }
     }
 

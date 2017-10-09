@@ -25,40 +25,44 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View v) {
 
-        String[] usernames = new String[] {
-                "bobbybrown",
-                "claraclear"
-        };
-
-        String[] passwords = new String[] {
-                "bobbybrown123",
-                "claraclear123"
-        };
-
         int userIndex = -1;
 
         // get the username
         String username = ((EditText)findViewById(R.id.username)).getText().toString();
         String password = ((EditText)findViewById(R.id.password)).getText().toString();
         // check if its valid
-        for (int i = 0; i < usernames.length; i++) {
-            if (usernames[i].equals(username)) {
-                userIndex = i;
-                break;
-            }
-            if (i + 1 == usernames.length) {
-                Toast.makeText(this, "Unknown Username", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-        // check the password
-        if (passwords[userIndex].equals(password) == false) {
-            Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show();
+        DBHelper db = new DBHelper(this);
+
+        User user = db.getUserByUsername(username);
+
+        if (user == null) {
+            Toast.makeText(this, "Unknown Username", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        if (user.password.equals(password) == false) {
+            Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+//        for (int i = 0; i < usernames.length; i++) {
+//            if (usernames[i].equals(username)) {
+//                userIndex = i;
+//                break;
+//            }
+//            if (i + 1 == usernames.length) {
+//                Toast.makeText(this, "Unknown Username", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//        }
+//        // check the password
+//        if (passwords[userIndex].equals(password) == false) {
+//            Toast.makeText(this, "Incorrect password", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+
         // Keep their username in memory
         CurrentUser.name = username;
+        CurrentUser.id = user.id;
 
         Intent homeIntent = new Intent(this, HomeActivity.class);
         startActivity(homeIntent);

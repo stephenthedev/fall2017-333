@@ -55,8 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
 
-        // Save the user
-        // TODO
+        // Save the user, this == activityContext
+        DBHelper db = new DBHelper(this);
+        db.insertUser(username, password);
+
         finish(); // complete the current activity
     }
 

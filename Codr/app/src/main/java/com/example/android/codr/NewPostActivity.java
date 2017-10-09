@@ -24,6 +24,9 @@ public class NewPostActivity extends AppCompatActivity {
 
         CurrentPosts.addPost(CurrentUser.name, content);
 
+        // save the post to the DB
+        DBHelper db = new DBHelper(this);
+        db.insertPost(content, CurrentUser.id);
 
         finish();
     }
