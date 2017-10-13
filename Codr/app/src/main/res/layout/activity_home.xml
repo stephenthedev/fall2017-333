@@ -24,6 +24,12 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:text="some post text that is somewhat longer than other text views can be"/>-->
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:onClick="openMyProfile"/>
+
     <LinearLayout
         android:id="@+id/allPosts"
         android:layout_width="match_parent"

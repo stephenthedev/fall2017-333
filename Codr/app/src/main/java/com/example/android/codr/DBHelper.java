@@ -82,7 +82,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor res = db.rawQuery(
-            "SELECT posts.id, username, content FROM posts " +
+            "SELECT posts.id, username, content, posts.userId FROM posts " +
             "LEFT JOIN users on users.id = posts.userId " +
             "ORDER BY posts.id DESC",
             null
@@ -96,7 +96,37 @@ public class DBHelper extends SQLiteOpenHelper {
         while (res.isAfterLast() == false) {
             posts.add(new Post(
                 res.getString(res.getColumnIndex("username")),
-                res.getString(res.getColumnIndex("content"))
+                res.getString(res.getColumnIndex("content")),
+                res.getInt(res.getColumnIndex("userId"))
+            ));
+
+            res.moveToNext();
+        }
+
+        return posts;
+    }
+
+    public List<Post> getPostsByUserId(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor res = db.rawQuery(
+                "SELECT posts.id, username, content FROM posts " +
+                        "LEFT JOIN users on users.id = posts.userId " +
+                        "WHERE posts.userId = " + userId + " " +
+                        "ORDER BY posts.id DESC",
+                null
+        );
+
+        // loop and create all posts
+        List<Post> posts = new ArrayList<Post>();
+
+        res.moveToFirst();
+
+        while (res.isAfterLast() == false) {
+            posts.add(new Post(
+                    res.getString(res.getColumnIndex("username")),
+                    res.getString(res.getColumnIndex("content")),
+                    userId
             ));
 
             res.moveToNext();

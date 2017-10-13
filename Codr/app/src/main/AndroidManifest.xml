@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".NewPostActivity"></activity>
+        <activity android:name=".NewPostActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

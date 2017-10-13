@@ -22,7 +22,7 @@ public class NewPostActivity extends AppCompatActivity {
         EditText contentText = (EditText)findViewById(R.id.contentText);
         String content = contentText.getText().toString();
 
-        CurrentPosts.addPost(CurrentUser.name, content);
+        CurrentPosts.addPost(CurrentUser.name, content, CurrentUser.id);
 
         // save the post to the DB
         DBHelper db = new DBHelper(this);
