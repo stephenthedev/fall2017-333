@@ -1,6 +1,7 @@
 package com.example.android.codr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -30,6 +31,7 @@ public class PostFragment extends Fragment {
     private String author;
     private String content;
     private int authorId;
+    private int postId;
 
     private OnFragmentInteractionListener mListener;
 
@@ -82,10 +84,25 @@ public class PostFragment extends Fragment {
         if (CurrentUser.id == this.authorId) {
             Button button = (Button)view.findViewById(R.id.editButton);
             button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    editButtonPressed(view);
+                }
+            });
         }
 
         return view;
     }
+
+    public void editButtonPressed(View v) {
+        ProfileActivity activity = (ProfileActivity)getActivity();
+        activity.editPost(v, content, postId);
+    }
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

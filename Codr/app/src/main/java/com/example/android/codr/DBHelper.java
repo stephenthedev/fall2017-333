@@ -78,6 +78,13 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("posts", null, contentValues);
     }
 
+    public void updatePost(int postId, String content) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("content", content);
+        db.update("posts", contentValues, "id=" + Integer.toString(postId), null);
+    }
+
     public List<Post> getAllPosts() {
         SQLiteDatabase db = this.getReadableDatabase();
 

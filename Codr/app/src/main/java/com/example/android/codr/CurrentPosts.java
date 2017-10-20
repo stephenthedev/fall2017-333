@@ -14,4 +14,13 @@ public class CurrentPosts {
         Log.i("CurrentPosts", "Added new post from author:" + author);
         Log.i("CurrentPosts", "Added new post content:" + content);
     }
+
+    public static void updatePost(int postId, String content) {
+        for (int i = 0; i < CurrentPosts.posts.size(); i++) {
+            if (CurrentPosts.posts.get(i).id == postId) {
+                CurrentPosts.posts.get(i).content = content;
+                break;
+            }
+        }
+    }
 }

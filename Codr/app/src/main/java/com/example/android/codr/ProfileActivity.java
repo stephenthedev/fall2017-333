@@ -2,10 +2,12 @@ package com.example.android.codr;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -52,6 +54,17 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
 
         transaction.commit();
     }
+
+
+    public void editPost(View v, String content, int postId) {
+        Intent intent = new Intent(this, NewPostActivity.class);
+
+        intent.putExtra("content", content);
+        intent.putExtra("postId", postId);
+
+        startActivity(intent);
+    }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

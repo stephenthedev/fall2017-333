@@ -7,10 +7,26 @@ import android.widget.EditText;
 
 public class NewPostActivity extends AppCompatActivity {
 
+    private boolean editMode = false;
+    private int postId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
+
+        // check to see if we are updating one, or creating one
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle.getString("content") != null) {
+            // fill in the edit text
+            EditText contentText = (EditText)findViewById(R.id.contentText);
+            contentText.setText(bundle.getString("content"));
+
+            // put this activity into edit mode
+            editMode = true;
+            postId = bundle.getInt("postId");
+        }
     }
 
     public void cancelPost(View v) {
@@ -22,11 +38,18 @@ public class NewPostActivity extends AppCompatActivity {
         EditText contentText = (EditText)findViewById(R.id.contentText);
         String content = contentText.getText().toString();
 
-        CurrentPosts.addPost(CurrentUser.name, content, CurrentUser.id);
+
 
         // save the post to the DB
         DBHelper db = new DBHelper(this);
-        db.insertPost(content, CurrentUser.id);
+
+        if (editMode) {
+            db.updatePost(postId, content);
+            CurrentPosts.updatePost(postId, content);
+        } else {
+            CurrentPosts.addPost(CurrentUser.name, content, CurrentUser.id);
+            db.insertPost(content, CurrentUser.id);
+        }
 
         finish();
     }
