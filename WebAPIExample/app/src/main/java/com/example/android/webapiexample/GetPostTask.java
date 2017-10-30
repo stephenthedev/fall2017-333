@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -54,5 +58,14 @@ public class GetPostTask extends AsyncTask<Void, Void, String> {
         textView.setText(content);
         textView.setVisibility(View.VISIBLE);
         loader.setVisibility(View.INVISIBLE);
+
+        try {
+            JSONObject post = (JSONObject)new JSONTokener(content).nextValue();
+
+            String title = post.getString("title");
+            String content = post.getString("content");
+        } catch (JSONException e) {
+            Log.e("ERROR", e.getMessage());
+        }
     }
 }
