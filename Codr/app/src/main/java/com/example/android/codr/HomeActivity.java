@@ -50,7 +50,8 @@ public class HomeActivity extends AppCompatActivity implements PostFragment.OnFr
                     PostFragment.newInstance(
                             currentPost.author,
                             currentPost.content,
-                            currentPost.authorId
+                            currentPost.authorId,
+                            currentPost.id
                     )
             );
         }

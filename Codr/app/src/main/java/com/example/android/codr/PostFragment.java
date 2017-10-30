@@ -26,6 +26,7 @@ public class PostFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_PARAM4 = "param4";
 
     // TODO: Rename and change types of parameters
     private String author;
@@ -48,12 +49,13 @@ public class PostFragment extends Fragment {
      * @return A new instance of fragment PostFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PostFragment newInstance(String param1, String param2, int param3) {
+    public static PostFragment newInstance(String param1, String param2, int param3, int param4) {
         PostFragment fragment = new PostFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         args.putInt(ARG_PARAM3, param3);
+        args.putInt(ARG_PARAM4, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,6 +67,7 @@ public class PostFragment extends Fragment {
             author = getArguments().getString(ARG_PARAM1);
             content = getArguments().getString(ARG_PARAM2);
             authorId = getArguments().getInt(ARG_PARAM3);
+            postId = getArguments().getInt(ARG_PARAM4);
         }
     }
 

@@ -18,7 +18,7 @@ public class NewPostActivity extends AppCompatActivity {
         // check to see if we are updating one, or creating one
         Bundle bundle = getIntent().getExtras();
 
-        if (bundle.getString("content") != null) {
+        if (bundle != null && bundle.getString("content") != null) {
             // fill in the edit text
             EditText contentText = (EditText)findViewById(R.id.contentText);
             contentText.setText(bundle.getString("content"));

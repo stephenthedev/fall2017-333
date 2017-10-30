@@ -47,7 +47,8 @@ public class ProfileActivity extends AppCompatActivity implements PostFragment.O
                 PostFragment.newInstance(
                         currentPost.author,
                         currentPost.content,
-                        currentPost.authorId
+                        currentPost.authorId,
+                        currentPost.id
                 )
             );
         }
