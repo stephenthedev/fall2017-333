@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Quizzer</string>
+    <string-array name="items">
+        <item>Reeses</item>
+        <item>Snickers</item>
+        <item>Hersheys</item>
+        <item>Skittles</item>
+    </string-array>
+    <string-array name="dogs">
+        <item>Lassie</item>
+        <item>Old Yeller</item>
+        <item>Air Bud</item>
+        <item>Crusoe</item>
+    </string-array>
+</resources>
