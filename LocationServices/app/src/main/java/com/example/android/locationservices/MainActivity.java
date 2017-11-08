@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
         };
 
         if (ContextCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_COARSE_LOCATION
+                this, Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
                 this, Manifest.permission.INTERNET
         ) == PackageManager.PERMISSION_GRANTED) {
-            locationManger.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
+            locationManger.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
         } else {
             Toast.makeText(this, "Permission not granted, asking for permission", Toast.LENGTH_LONG).show();
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(
                 this, // the activity context
                 new String[] {
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.INTERNET
                 },
                 2 // A custom integer we can define as the request code
