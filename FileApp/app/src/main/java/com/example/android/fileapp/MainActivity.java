@@ -1,4 +1,4 @@
-package com.example.fileapp;
+package com.example.android.fileapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
