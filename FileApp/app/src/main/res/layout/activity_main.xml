@@ -23,11 +23,11 @@
         android:layout_height="wrap_content"
         android:text="External List"
         android:textSize="24sp"/>
-    <TextView
-        android:id="@+id/externalList"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/externalFileList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:orientation="vertical"></LinearLayout>
 
     <EditText
         android:layout_width="match_parent"
